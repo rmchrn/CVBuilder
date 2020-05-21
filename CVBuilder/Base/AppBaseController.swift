@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AppBaseController.swift
 //  CVBuilder
 //
 //  Created by Ramcharan Reddy Gaddam on 20/05/20.
@@ -8,13 +8,15 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class AppBaseController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        initialUISetup()
     }
-
-
+    
+    func initialUISetup() {
+        self.view.backgroundColor = .white
+    }
+    
 }
-
