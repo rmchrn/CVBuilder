@@ -20,7 +20,7 @@ class PersonalViewTests: XCTestCase {
         sut = nil
     }
 
-    func testGetDataCall() {
+    func testShouldFetchDataOnGetDataCall() {
         let expectation = XCTestExpectation(description: "Get data call")
         sut?.getProfileData(completion: { (personalInfo, error) in
             expectation.fulfill()
