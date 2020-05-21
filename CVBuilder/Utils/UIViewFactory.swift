@@ -10,10 +10,10 @@ import UIKit
 
 //This protocol create view dynamically and pass to view
 
-protocol UIFactoryProtocol:UITextFieldDelegate {}
+protocol UIFactoryProtocol: UITextFieldDelegate {}
 
 extension UIFactoryProtocol {
-    func makeImageView(size:CGSize, target:UITapGestureRecognizer) -> UIImageView{
+    func makeImageView(size: CGSize, target: UITapGestureRecognizer) -> UIImageView {
         let personalImageView = UIImageView()
         personalImageView.layer.borderWidth = 1.0
         personalImageView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
@@ -33,11 +33,11 @@ extension UIFactoryProtocol {
         return personalImageView
     }
    
-    func makeTextField(size:CGSize, text:String, keyboadType:UIKeyboardType) -> UITextField {
+    func makeTextField(size: CGSize, text: String, keyboadType: UIKeyboardType) -> UITextField {
         let customTextField = UITextField()
         customTextField.accessibilityIdentifier = text
         customTextField.placeholder = text
-        customTextField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor:UIColor.lightGray])
+        customTextField.attributedPlaceholder = NSAttributedString(string: text, attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         customTextField.keyboardType = keyboadType
         customTextField.borderStyle = .roundedRect
         customTextField.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
@@ -47,7 +47,7 @@ extension UIFactoryProtocol {
         return customTextField
     }
     
-    func makeDatePicker(view:UIView) -> UIDatePicker {
+    func makeDatePicker(view: UIView) -> UIDatePicker {
         let datePicker = UIDatePicker()
         datePicker.frame = CGRect(x: 0, y: view.frame.size.height - 200, width: view.frame.size.width, height: 200)
         datePicker.backgroundColor = UIColor.white
@@ -56,7 +56,7 @@ extension UIFactoryProtocol {
         return datePicker
     }
     
-    func makeToolBar(view:UIView) -> UIToolbar {
+    func makeToolBar(view: UIView) -> UIToolbar {
         // ToolBar
         let toolBar = UIToolbar()
         toolBar.frame = CGRect(x: 0, y: view.frame.size.height - 240, width: view.frame.size.width, height: 40)
@@ -67,4 +67,3 @@ extension UIFactoryProtocol {
         return toolBar
     }
 }
-

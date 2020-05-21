@@ -13,7 +13,6 @@ struct CreateCVConstants {
     static let kPastProjects = "Past projects"
     static let kProfessionalInfo = "Professional information"
     static let kAdditionalInfo = "Additional information"
-    
     static let kVCTitle = "Sections"
     static let kReuseIdentifierForResumeTopic = "ResumeTopicCell"
 }

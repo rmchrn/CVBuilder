@@ -8,11 +8,10 @@
 
 import UIKit
 
-
 class PersonalViewController: AppBaseController {
     @IBOutlet weak var personalInfoScrollView: UIScrollView!
     
-    var firstName:UITextField?
+    var firstName: UITextField?
     var lastName: UITextField?
     var phoneNumner: UITextField?
     var emailId: UITextField?
@@ -29,9 +28,9 @@ class PersonalViewController: AppBaseController {
     var userImageView = UIImageView().self
     var personalModel = PersonalInfo()
     
-    weak var coordinator:MainCoordinator?
+    weak var coordinator: MainCoordinator?
     var viewModel = PersonalViewModel()
-    var isNewCV:Bool = true
+    var isNewCV: Bool = true
     
     // MARK: - View life cycle methods.
     override func viewDidLoad() {
@@ -55,6 +54,7 @@ class PersonalViewController: AppBaseController {
     }
     
     // MARK: - Fill Personal Info model class from UI
+    // swiftlint:disable:next cyclomatic_complexity
     fileprivate func createPeronalInfoModel() -> PersonalInfo {
         personalModel = PersonalInfo()
         if let firstName = firstName?.text {
@@ -78,9 +78,7 @@ class PersonalViewController: AppBaseController {
         if let dateOfBirth = dateOfBirth?.text {
             personalModel.dateOfBirth = dateOfBirth
         }
-        if let _ = userImageView.image {
-            personalModel.userImage = DataHolder.sharedInstance.getImage(imageName: PersonalViewConstants.kImageName)
-        }
+        personalModel.userImage = DataHolder.sharedInstance.getImage(imageName: PersonalViewConstants.kImageName)
         if let yearOfExperiece = yearOfExperiece?.text {
             personalModel.yearOfExperiece = yearOfExperiece
         }
@@ -123,7 +121,7 @@ class PersonalViewController: AppBaseController {
     // MARK: - Set Up Stack view
     fileprivate func setUpStackView() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        let views = buildViews(target: tapGestureRecognizer)
+        guard let views = buildViews(target: tapGestureRecognizer) else { return }
         let stackView = UIStackView()
         for view in views {
             stackView.addArrangedSubview(view)
@@ -142,8 +140,8 @@ class PersonalViewController: AppBaseController {
         if !isNewCV {
             viewModel.getProfileData { (personalInfo, error) in
                 DispatchQueue.main.async {
-                    if let _ = error {
-                        self.showError(withMessage: error?.localizedDescription ?? "Error while fetching CV data")
+                    if let error = error {
+                        self.showError(withMessage: error.localizedDescription)
                     } else {
                         self.loadViewWithSavedorFetchedData(info: personalInfo)
                     }
@@ -194,8 +192,7 @@ class PersonalViewController: AppBaseController {
     }
     
     // MARK: - Show image picker
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
-    {
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         //        let tappedImage = tapGestureRecognizer.view as! UIImageView
         ImagePickerManager().pickImage(self) { image in
             //here is the image
@@ -204,7 +201,7 @@ class PersonalViewController: AppBaseController {
             
         }
     }
-    // MARK:- Tool bar button methods
+    // MARK: - Tool bar button methods
     @objc func doneClick() {
         let dateFormatter1 = DateFormatter()
         dateFormatter1.dateStyle = .medium
@@ -219,7 +216,7 @@ class PersonalViewController: AppBaseController {
         toolBar.isHidden = true
     }
     
-    // MARK:- datePickerValueChanged methods
+    // MARK: - datePickerValueChanged methods
     @objc func datePickerValueChanged(_ sender: UIDatePicker) {
         // Create date formatter
         let dateFormatter: DateFormatter = DateFormatter()

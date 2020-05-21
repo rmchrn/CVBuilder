@@ -13,4 +13,3 @@ struct LandingConstants {
     static let kCreateNew = "Create New"
     static let kViewOrEdit = "View/Edit"
 }
-

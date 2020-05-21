@@ -12,10 +12,10 @@ class DataHolder: NSObject {
     static let sharedInstance = DataHolder()
     var fetchSaved = 0
     private override init() {
-        
+
     }
     // MARK: - Save  image
-    func saveImage(imageName: String, image:UIImage){
+    func saveImage(imageName: String, image: UIImage) {
         //create an instance of the FileManager
         let fileManager = FileManager.default
         //get the image path
@@ -31,9 +31,9 @@ class DataHolder: NSObject {
     func getImage(imageName: String) -> String {
         let fileManager = FileManager.default
         let imagePath = (NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString).appendingPathComponent(imageName)
-        if fileManager.fileExists(atPath: imagePath){
+        if fileManager.fileExists(atPath: imagePath) {
             return imagePath
-        }else{
+        } else {
             print("Panic! No Image!")
         }
         return imagePath

@@ -9,13 +9,13 @@
 import UIKit
 
 protocol SuccessPresentable {
-    func showSuccess(withMessage message:String)
+    func showSuccess(withMessage message: String)
 }
 
-extension SuccessPresentable where Self:UIViewController {
-    func showSuccess(withMessage message:String) {
+extension SuccessPresentable where Self: UIViewController {
+    func showSuccess(withMessage message: String) {
         let alert = UIAlertController(title: Constants.kAlertTitle, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: Constants.kOk, style: UIAlertAction.Style.default) { (action) in
+        let action = UIAlertAction(title: Constants.kOk, style: UIAlertAction.Style.default) { (_) in
             alert.dismiss(animated: false, completion: nil)
         }
         alert.addAction(action)
@@ -23,6 +23,6 @@ extension SuccessPresentable where Self:UIViewController {
     }
 }
 
-protocol AlertPresentable:ErrorPresentable,SuccessPresentable {
+protocol AlertPresentable: ErrorPresentable, SuccessPresentable {
     
 }

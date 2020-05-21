@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum httpMethod:String {
+enum HttpMethod: String {
     case GET
     case POST
     case FORM
@@ -22,7 +22,7 @@ class ServiceHandler: NSObject, URLSessionDelegate {
     func getProfile(url: URL, completion: @escaping (PersonalInfo?, Error?) -> Void) {
         var urlRequest = URLRequest(url: url)
         urlRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        urlRequest.httpMethod = httpMethod.GET.rawValue
+        urlRequest.httpMethod = HttpMethod.GET.rawValue
         
         // set up the session
         let config = URLSessionConfiguration.ephemeral
@@ -30,17 +30,16 @@ class ServiceHandler: NSObject, URLSessionDelegate {
         let session = URLSession(configuration: config)
         
         // make the request
-        let task = session.dataTask(with: urlRequest) {
-            (data, response, error) in
+        let task = session.dataTask(with: urlRequest) { (data, _, error) in
             // check for any errors
             guard error == nil else {
                 print(error ?? "Error in request")
-                completion(nil,error)
+                completion(nil, error)
                 return
             }
             // make sure we got data
             guard let responseData = data else {
-                completion(nil,error)
+                completion(nil, error)
                 return
             }
             do {
@@ -48,7 +47,7 @@ class ServiceHandler: NSObject, URLSessionDelegate {
                 print(peronalInfoModel)
                 completion(peronalInfoModel, nil)
             } catch {
-                completion(nil,error)
+                completion(nil, error)
             }
             
         }

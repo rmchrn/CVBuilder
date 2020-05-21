@@ -10,13 +10,13 @@ import UIKit
 
 class CreateCVViewController: AppBaseController {
     
-    var tableView:UITableView!
+    var tableView: UITableView!
 
-    weak var coordinator:MainCoordinator?
+    weak var coordinator: MainCoordinator?
     
-    var isNewCV:Bool = true
+    var isNewCV: Bool = true
     
-    var dataSource = [CreateCVConstants.kPersonalInfo,CreateCVConstants.kPastProjects,CreateCVConstants.kProfessionalInfo,CreateCVConstants.kAdditionalInfo]
+    var dataSource = [CreateCVConstants.kPersonalInfo, CreateCVConstants.kPastProjects, CreateCVConstants.kProfessionalInfo, CreateCVConstants.kAdditionalInfo]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,4 +68,4 @@ extension CreateCVViewController: UITableViewDelegate {
     }
 }
 
-extension CreateCVViewController:ErrorPresentable {}
+extension CreateCVViewController: ErrorPresentable {}

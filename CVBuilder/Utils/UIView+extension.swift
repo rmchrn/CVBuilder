@@ -31,11 +31,11 @@ extension UIView {
         ])
     }
     
-    func setWidth(withContant width:CGFloat) {
+    func setWidth(withContant width: CGFloat) {
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
     }
     
-    func setHeight(withContant height:CGFloat) {
+    func setHeight(withContant height: CGFloat) {
         self.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
     

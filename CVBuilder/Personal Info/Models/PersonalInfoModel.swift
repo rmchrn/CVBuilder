@@ -9,7 +9,7 @@
 import UIKit
 
 //Personal info Codable model/entity.
-struct PersonalInfo:Codable {
+struct PersonalInfo: Codable {
     var firstName = ""
     var lastName = ""
     var phoneNumner = ""
@@ -23,5 +23,4 @@ struct PersonalInfo:Codable {
     var secondaryEducationMarks = ""
     var higherEducationMarks = ""
     var userImage = ""
-    
 }

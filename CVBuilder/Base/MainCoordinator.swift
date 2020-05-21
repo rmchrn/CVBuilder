@@ -17,22 +17,22 @@ class MainCoordinator: Coordinator {
     }
 
     func start() {
-        let vc = LandingViewController()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+        let landingVC = LandingViewController()
+        landingVC.coordinator = self
+        navigationController.pushViewController(landingVC, animated: false)
     }
     
-    func gotoCreateVC(_ isNewCV:Bool) {
-        let vc = CreateCVViewController()
-        vc.isNewCV = isNewCV
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: false)
+    func gotoCreateVC(_ isNewCV: Bool) {
+        let createCVVC = CreateCVViewController()
+        createCVVC.isNewCV = isNewCV
+        createCVVC.coordinator = self
+        navigationController.pushViewController(createCVVC, animated: false)
     }
     
-    func gotoPersonalInfo(_ isNewCV:Bool) {
-        let vc = PersonalViewController()
-        vc.coordinator = self
-        vc.isNewCV = isNewCV
-        navigationController.pushViewController(vc, animated: false)
+    func gotoPersonalInfo(_ isNewCV: Bool) {
+        let personalInfoVC = PersonalViewController()
+        personalInfoVC.coordinator = self
+        personalInfoVC.isNewCV = isNewCV
+        navigationController.pushViewController(personalInfoVC, animated: false)
     }
 }

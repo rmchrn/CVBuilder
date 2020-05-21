@@ -9,29 +9,26 @@
 import UIKit
 
 class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    var picker = UIImagePickerController();
+    var picker = UIImagePickerController()
     var alert = UIAlertController(title: "Choose Image", message: nil, preferredStyle: .actionSheet)
     var viewController: UIViewController?
-    var pickImageCallback : ((UIImage) -> ())?;
+    var pickImageCallback: ((UIImage) -> Void)?
     
-    override init(){
+    override init() {
         super.init()
     }
     
-    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> ())) {
-        pickImageCallback = callback;
-        self.viewController = viewController;
+    func pickImage(_ viewController: UIViewController, _ callback: @escaping ((UIImage) -> Void)) {
+        pickImageCallback = callback
+        self.viewController = viewController
         
-        let cameraAction = UIAlertAction(title: "Camera", style: .default){
-            UIAlertAction in
+        let cameraAction = UIAlertAction(title: "Camera", style: .default) { _ in
             self.openCamera()
         }
-        let galleryAction = UIAlertAction(title: "Gallery", style: .default){
-            UIAlertAction in
+        let galleryAction = UIAlertAction(title: "Gallery", style: .default) { _ in
             self.openGallery()
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel){
-            UIAlertAction in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
         }
         
         // Add the actions
@@ -42,9 +39,9 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         alert.popoverPresentationController?.sourceView = self.viewController?.view
         viewController.present(alert, animated: true, completion: nil)
     }
-    func openCamera(){
+    func openCamera() {
         alert.dismiss(animated: true, completion: nil)
-        if(UIImagePickerController .isSourceTypeAvailable(.camera)){
+        if UIImagePickerController .isSourceTypeAvailable(.camera) {
             picker.sourceType = .camera
             self.viewController?.present(picker, animated: true, completion: nil)
         } else {
@@ -52,11 +49,11 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
         }
     }
     
-    // MARK:- Alert for no camera
-    func showAlert(message:String) {
+    // MARK: - Alert for no camera
+    func showAlert(message: String) {
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
-            switch action.style{
+            switch action.style {
             case .default:
                 debugPrint("default")
                 
@@ -66,26 +63,24 @@ class ImagePickerManager: NSObject, UIImagePickerControllerDelegate, UINavigatio
             case .destructive:
                 debugPrint("destructive")
                 
-                
             @unknown default:
                 debugPrint("unknown default")
             }}))
         viewController?.present(alert, animated: true, completion: nil)
     }
     
-    func openGallery(){
+    func openGallery() {
         alert.dismiss(animated: true, completion: nil)
         picker.sourceType = .photoLibrary
         self.viewController?.present(picker, animated: true, completion: nil)
     }
-    
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController,
-    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             pickImageCallback?(image)

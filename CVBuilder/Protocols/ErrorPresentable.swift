@@ -9,13 +9,13 @@
 import UIKit
 
 protocol ErrorPresentable {
-    func showError(withMessage message:String)
+    func showError(withMessage message: String)
 }
 
-extension ErrorPresentable where Self:UIViewController {
-    func showError(withMessage message:String) {
+extension ErrorPresentable where Self: UIViewController {
+    func showError(withMessage message: String) {
         let alert = UIAlertController(title: Constants.kAlertTitle, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: Constants.kOk, style: UIAlertAction.Style.default) { (action) in
+        let action = UIAlertAction(title: Constants.kOk, style: UIAlertAction.Style.default) { (_) in
             alert.dismiss(animated: false, completion: nil)
         }
         alert.addAction(action)

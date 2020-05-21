@@ -10,11 +10,11 @@ import UIKit
 
 class LandingViewController: AppBaseController {
     
-    var createNewButton:UIButton!
+    var createNewButton: UIButton!
     
-    var fetchAndUpdateButton:UIButton!
+    var fetchAndUpdateButton: UIButton!
     
-    weak var coordinator:MainCoordinator?
+    weak var coordinator: MainCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()

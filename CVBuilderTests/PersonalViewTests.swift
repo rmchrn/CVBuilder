@@ -10,8 +10,7 @@ import XCTest
 @testable import CVBuilder
 
 class PersonalViewTests: XCTestCase {
-    
-    var sut:PersonalViewModel?
+    var sut: PersonalViewModel?
 
     override func setUp() {
         sut = PersonalViewModel()
@@ -25,10 +24,9 @@ class PersonalViewTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Get data call")
         sut?.getProfileData(completion: { (personalInfo, error) in
             expectation.fulfill()
-            XCTAssertNil(error)
-            XCTAssertTrue(personalInfo != nil)
+            XCTAssertTrue(error == nil, "error while fetching CV data")
+            XCTAssertTrue(personalInfo != nil, "error while fetching CV data")
         })
         wait(for: [expectation], timeout: 30)
     }
-    
 }

@@ -1,0 +1,58 @@
+disabled_rules: # rule identifiers to exclude from running
+#- colon
+#- comma
+#- control_statement
+- line_length
+- trailing_whitespace
+#- vertical_whitespace
+#- opening_brace
+#- statement_position
+#- trailing_newline
+#- mark # it should be '// MARK:
+#- todo
+#- empty_parentheses_with_trailing_closure
+#- trailing_semicolon
+#- identifier_name # Error - Solution
+#- leading_whitespace
+#- function_body_length
+#- unneeded_break_in_switch
+#- file_length
+#- type_name
+
+# Need to comment below rules to resolve warnings
+# Enable below rules
+#- unused_closure_parameter
+#- redundant_optional_initialization
+#- redundant_void_return
+#- weak_delegate
+#- implicit_getter
+#- void_return
+#- cyclomatic_complexity
+#- closure_parameter_position
+#- class_delegate_protocol
+#- discarded_notification_center_observer
+#- private_over_fileprivate
+#- legacy_constructor
+#- unused_optional_binding
+#- function_parameter_count
+#- type_body_length
+#- empty_enum_arguments
+#- for_where
+#- syntactic_sugar
+
+# Need to comment below rules to resolve errors
+# Enable below rules
+#- empty_count
+#- force_cast
+#- shorthand_operator
+#- force_try
+
+opt_in_rules: # some rules are only opt-in
+#- empty_count
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+#- Pods
+#- Source/ExcludedFolder
+#- Source/ExcludedFile.swift
+#- Source/*/ExcludedFile.swift # Exclude files with a wildcard
+
+
