@@ -9,6 +9,8 @@
 import UIKit
 
 class PersonalViewController: AppBaseController {
+    
+    // MARK: - User interace variable/outlets
     @IBOutlet weak var personalInfoScrollView: UIScrollView!
     
     var firstName: UITextField?
@@ -27,7 +29,7 @@ class PersonalViewController: AppBaseController {
     var toolBar = UIToolbar()
     var userImageView = UIImageView().self
     var personalModel = PersonalInfo()
-    
+    // MARK: - properties
     weak var coordinator: MainCoordinator?
     var viewModel = PersonalViewModel()
     var isNewCV: Bool = true

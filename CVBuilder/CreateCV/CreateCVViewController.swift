@@ -9,15 +9,16 @@
 import UIKit
 
 class CreateCVViewController: AppBaseController {
-    
+    // MARK: - User interface variables
     var tableView: UITableView!
 
+    // MARK: - Properties
     weak var coordinator: MainCoordinator?
     
     var isNewCV: Bool = true
     
     var dataSource = [CreateCVConstants.kPersonalInfo, CreateCVConstants.kPastProjects, CreateCVConstants.kProfessionalInfo, CreateCVConstants.kAdditionalInfo]
-    
+    // MARK: - life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,7 +26,7 @@ class CreateCVViewController: AppBaseController {
         
         tableviewSetup()
     }
-
+    // MARK: - UI setup helper methods
     fileprivate func tableviewSetup() {
          self.tableView = UITableView()
          self.tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -37,7 +38,7 @@ class CreateCVViewController: AppBaseController {
      }
     
 }
-
+// MARK: - Table view Datasource methods
 extension CreateCVViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
@@ -49,7 +50,7 @@ extension CreateCVViewController: UITableViewDataSource {
         return cell
     }
 }
-
+// MARK: - Table view Delegate methods
 extension CreateCVViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)

@@ -47,14 +47,15 @@ class CVBuilderUITests: XCTestCase {
         let enterAddressLine2TextField = elementsQuery.textFields["Enter address Line 2"]
         enterAddressLine2TextField.tap()
         enterAddressLine2TextField.typeText("Hyderabad")
-        elementsQuery.textFields["Select DOB."].tap()
+        let selectDOB2TextField = elementsQuery.textFields["Select DOB"]
+        selectDOB2TextField.tap()
         let datePickersQuery = app.datePickers
         datePickersQuery.pickerWheels.element(boundBy: 0).adjust(toPickerWheelValue: "August")
         datePickersQuery.pickerWheels.element(boundBy: 1).adjust(toPickerWheelValue: "27")
         datePickersQuery.pickerWheels.element(boundBy: 2).adjust(toPickerWheelValue: "1994")
         app.toolbars["Toolbar"].buttons["Done"].tap()
-        elementsQuery.textFields["Enter year of experiece."].tap()
-        let enterSkillSetTextField = elementsQuery.textFields["Enter skill set."]
+        elementsQuery.textFields["Enter year of experiece"].tap()
+        let enterSkillSetTextField = elementsQuery.textFields["Enter skill set"]
         enterSkillSetTextField.tap()
         enterSkillSetTextField.typeText("iOS, Swift, Objective-c")
         let enterPrimaryEducationTextField = elementsQuery.textFields["Enter primary education %"]
