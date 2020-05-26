@@ -12,7 +12,9 @@ class LandingViewController: AppBaseController {
     // MARK: - User interface variables
     var createNewButton: UIButton!
     
-    var fetchAndUpdateButton: UIButton!
+    var viewButton: UIButton!
+    
+    var editButton: UIButton!
     
     var stack: UIStackView!
     
@@ -36,7 +38,8 @@ class LandingViewController: AppBaseController {
         view.addSubview(stack)
         stack.center(in: view)
         setupCreateNewButton()
-        setupViewOrEditButton()
+        setupViewButton()
+        setupEditButton()
     }
     
     fileprivate func setupCreateNewButton() {
@@ -50,21 +53,32 @@ class LandingViewController: AppBaseController {
         createNewButton.setHeight(withContant: 40)
         createNewButton.addTarget(self, action: #selector(createNewResume), for: UIControl.Event.touchUpInside)
         stack.addArrangedSubview(createNewButton)
-        //self.createNewButton.center(in: self.view, offset: UIOffset(horizontal: 0, vertical: -25))
     }
     
-    fileprivate func setupViewOrEditButton() {
-        fetchAndUpdateButton = UIButton()
-        fetchAndUpdateButton.accessibilityIdentifier = "view or edit"
-        fetchAndUpdateButton.backgroundColor = MainTheme().buttonPrimaryColor
-        fetchAndUpdateButton.translatesAutoresizingMaskIntoConstraints = false
-        fetchAndUpdateButton.setTitle(LandingConstants.kViewOrEdit, for: UIControl.State.normal)
-        self.view.addSubview(fetchAndUpdateButton)
-        fetchAndUpdateButton.setWidth(withContant: 150)
-        fetchAndUpdateButton.setHeight(withContant: 40)
-        fetchAndUpdateButton.addTarget(self, action: #selector(viewOrEditResume), for: .touchUpInside)
-        stack.addArrangedSubview(fetchAndUpdateButton)
-        //self.fetchAndUpdateButton.center(in: self.view, offset: UIOffset(horizontal: 0, vertical: +25))
+    fileprivate func setupViewButton() {
+        viewButton = UIButton()
+        viewButton.accessibilityIdentifier = "view"
+        viewButton.backgroundColor = MainTheme().buttonPrimaryColor
+        viewButton.translatesAutoresizingMaskIntoConstraints = false
+        viewButton.setTitle(LandingConstants.kView, for: UIControl.State.normal)
+        self.view.addSubview(viewButton)
+        viewButton.setWidth(withContant: 150)
+        viewButton.setHeight(withContant: 40)
+        viewButton.addTarget(self, action: #selector(viewOrEditResume), for: .touchUpInside)
+        stack.addArrangedSubview(viewButton)
+    }
+    
+    fileprivate func setupEditButton() {
+        editButton = UIButton()
+        editButton.accessibilityIdentifier = "edit"
+        editButton.backgroundColor = MainTheme().buttonPrimaryColor
+        editButton.translatesAutoresizingMaskIntoConstraints = false
+        editButton.setTitle(LandingConstants.kEdit, for: UIControl.State.normal)
+        self.view.addSubview(editButton)
+        editButton.setWidth(withContant: 150)
+        editButton.setHeight(withContant: 40)
+        editButton.addTarget(self, action: #selector(viewOrEditResume), for: .touchUpInside)
+        stack.addArrangedSubview(editButton)
     }
     
     // MARK: - Navigations

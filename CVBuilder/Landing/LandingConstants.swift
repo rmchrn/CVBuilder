@@ -11,5 +11,6 @@ import Foundation
 struct LandingConstants {
     static let kVCTitle = "Home"
     static let kCreateNew = "Create New"
-    static let kViewOrEdit = "View/Edit"
+    static let kView = "View"
+    static let kEdit = "Edit"
 }
