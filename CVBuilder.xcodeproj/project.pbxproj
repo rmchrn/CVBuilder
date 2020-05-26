@@ -41,6 +41,7 @@
 		B4302020247675CB00F85453 /* PersonalViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B430201F247675CB00F85453 /* PersonalViewTests.swift */; };
 		B4AB33C6247689C500951327 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B4AB33C5247689C500951327 /* .swiftlint.yml */; };
 		B4AB33C82476A5C400951327 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB33C72476A5C400951327 /* CoordinatorTests.swift */; };
+		B4AB340C247D70ED00951327 /* ShowCVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340B247D70ED00951327 /* ShowCVViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		B430201F247675CB00F85453 /* PersonalViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewTests.swift; sourceTree = "<group>"; };
 		B4AB33C5247689C500951327 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B4AB33C72476A5C400951327 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
+		B4AB340B247D70ED00951327 /* ShowCVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				B418075E247554FB008E097A /* Landing */,
 				B4180761247557BB008E097A /* CreateCV */,
 				B418077324758803008E097A /* Personal Info */,
+				B4AB340A247D709200951327 /* ShowCV */,
 				B418077624758A74008E097A /* Utils */,
 				B418072D24753EBA008E097A /* Assets.xcassets */,
 				B418072F24753EBA008E097A /* LaunchScreen.storyboard */,
@@ -268,6 +271,14 @@
 				B418077424758828008E097A /* PersonalInfoModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		B4AB340A247D709200951327 /* ShowCV */ = {
+			isa = PBXGroup;
+			children = (
+				B4AB340B247D70ED00951327 /* ShowCVViewController.swift */,
+			);
+			path = ShowCV;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +441,7 @@
 				B418075B247541BF008E097A /* LandingViewController.swift in Sources */,
 				B418077524758828008E097A /* PersonalInfoModel.swift in Sources */,
 				B4148F5C24765F7C00F501AB /* CreateCVConstants.swift in Sources */,
+				B4AB340C247D70ED00951327 /* ShowCVViewController.swift in Sources */,
 				B418075924753FD1008E097A /* MainCoordinator.swift in Sources */,
 				B4180771247587E2008E097A /* PersonalViewController+ViewFactory.swift in Sources */,
 				B4180760247555C0008E097A /* CreateCVViewController.swift in Sources */,

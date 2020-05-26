@@ -74,19 +74,12 @@ class CVBuilderUITests: XCTestCase {
     func testViewOrEditFlow() {
         let app = XCUIApplication()
         app.activate()
-        app.buttons["view or edit"].tap()
+        let viewButton = app.buttons.element(boundBy: 1)
+        viewButton.tap()
         let cell = app.tables.staticTexts["Personal information"]
         cell.tap()
         app.scrollViews["scrollView"].otherElements.textFields["Enter email Id"].tap()
         app.navigationBars["Personal Info"].buttons["save"].tap()
         app.alerts["CVBuilder"].scrollViews.otherElements.buttons["Ok"].tap()
-    }
-    func testLaunchPerformance() {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
-        }
     }
 }
