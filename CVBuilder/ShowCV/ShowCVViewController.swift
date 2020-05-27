@@ -22,6 +22,9 @@ class ShowCVViewController: AppBaseController {
     var personalInfoHeader: UIView!
     var personalInfoBody: UIView!
     
+    var rolesAndResponsibilitiesSection: UIStackView!
+    var rolesAndResponsibilitiesHeader: UIView!
+    var rolesAndResponsibilitiesBody: UIStackView!
     // MARK: - Properties
     var personalInfo: PersonalInfo?
     var viewModel = ShowCVViewModel()
@@ -54,9 +57,12 @@ class ShowCVViewController: AppBaseController {
         setupProfileAvatar()
         setupPersonalInfoStack()
         setupPersonalHeader()
-        personalInfoSection.sizeToFit()
+        setupRolesStack()
+        setupRolesHeader()
         guard let personalInfo = personalInfo else { return }
         self.title = personalInfo.firstName
+        let lastView = self.contentView.subviews.last
+        lastView?.bottomAnchor.constraint(equalToSystemSpacingBelow: self.contentView.bottomAnchor, multiplier: 1.0).isActive = true
     }
     
     fileprivate func setupMobileNumberLabel() {
@@ -94,26 +100,6 @@ class ShowCVViewController: AppBaseController {
         linkedInProfile.addGestureRecognizer(tapGesture)
     }
     
-    fileprivate func addPersonalRow(withTitle tittle: String, description desc: String) {
-        let addressRow = UIStackView()
-        addressRow.axis = .horizontal
-        addressRow.alignment = .top
-        personalInfoSection.addArrangedSubview(addressRow)
-        
-        let title = UILabel()
-        addressRow.addArrangedSubview(title)
-        title.text = tittle
-        title.font = UIFont.boldSystemFont(ofSize: 12)
-        title.sizeToFit()
-        
-        let description = UILabel()
-        addressRow.addArrangedSubview(description)
-        description.font = UIFont.systemFont(ofSize: 12)
-        description.numberOfLines = 0
-        description.text = desc
-        description.sizeToFit()
-    }
-    
     fileprivate func setupScrollView() {
         //personalInfoModel.firstName
         
@@ -125,8 +111,8 @@ class ShowCVViewController: AppBaseController {
         contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         mainScrollView.addSubview(contentView)
-        contentView.pin(to: view)
         contentView.setWidth(withContant: view.frame.size.width)
+        contentView.pin(to: mainScrollView, insets: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0))
     }
     
     fileprivate func setupBasicInfoVStack() {
@@ -135,9 +121,9 @@ class ShowCVViewController: AppBaseController {
         basicInfoVStackView.spacing = 8
         contentView.addSubview(basicInfoVStackView)
         basicInfoVStackView.translatesAutoresizingMaskIntoConstraints = false
-        basicInfoVStackView.top(from: view, constant: 100)
-        basicInfoVStackView.leading(from: view, constant: 8)
-        basicInfoVStackView.trailing(from: view, constant: 88)
+        basicInfoVStackView.top(from: contentView, constant: 0)
+        basicInfoVStackView.leading(from: contentView, constant: 8)
+        basicInfoVStackView.trailing(from: contentView, constant: 88)
         basicInfoVStackView.sizeToFit()
     }
     
@@ -148,8 +134,8 @@ class ShowCVViewController: AppBaseController {
         profileAvatarImageView.setHeight(withContant: 90)
         profileAvatarImageView.contentMode = .scaleAspectFit
         contentView.addSubview(profileAvatarImageView)
-        profileAvatarImageView.top(from: view, constant: 100)
-        profileAvatarImageView.trailing(from: view, constant: 8)
+        profileAvatarImageView.top(from: contentView, constant: 0)
+        profileAvatarImageView.trailing(from: contentView, constant: 8)
         guard let urlString = personalInfo?.userImage else { return }
         guard let url = URL(string: urlString) else { return }
 
@@ -198,6 +184,79 @@ class ShowCVViewController: AppBaseController {
         addPersonalRow(withTitle: ShowCVConstants.higherEduTitle, description: "\(personalInfo.higherEducationMarks)")
         addPersonalRow(withTitle: ShowCVConstants.secondaryEduTitle, description: "\(personalInfo.secondaryEducationMarks)")
         addPersonalRow(withTitle: ShowCVConstants.primaryEduTitle, description: "\(personalInfo.primaryEducationMarks)")
+    }
+    
+    fileprivate func addPersonalRow(withTitle tittle: String, description desc: String) {
+        let addressRow = UIStackView()
+        addressRow.axis = .horizontal
+        addressRow.alignment = .top
+        personalInfoSection.addArrangedSubview(addressRow)
+        
+        let title = UILabel()
+        addressRow.addArrangedSubview(title)
+        title.text = tittle
+        title.font = UIFont.boldSystemFont(ofSize: 12)
+        title.sizeToFit()
+        
+        let description = UILabel()
+        addressRow.addArrangedSubview(description)
+        description.font = UIFont.systemFont(ofSize: 12)
+        description.numberOfLines = 0
+        description.text = desc
+        description.sizeToFit()
+    }
+    
+    fileprivate func setupRolesStack() {
+        rolesAndResponsibilitiesSection = UIStackView()
+        rolesAndResponsibilitiesSection.translatesAutoresizingMaskIntoConstraints = false
+        rolesAndResponsibilitiesSection.axis = .vertical
+        rolesAndResponsibilitiesSection.spacing = 16
+        contentView.addSubview(rolesAndResponsibilitiesSection)
+        NSLayoutConstraint(item: rolesAndResponsibilitiesSection as Any, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: personalInfoSection as Any, attribute: .bottom, multiplier: 1.0, constant: 5).isActive = true
+        rolesAndResponsibilitiesSection.leading(from: contentView, constant: 8)
+        rolesAndResponsibilitiesSection.trailing(from: contentView, constant: 8)
+    }
+    
+    fileprivate func setupRolesHeader() {
+        rolesAndResponsibilitiesHeader = UIView()
+        rolesAndResponsibilitiesHeader.translatesAutoresizingMaskIntoConstraints = false
+        rolesAndResponsibilitiesSection.addArrangedSubview(rolesAndResponsibilitiesHeader)
+        rolesAndResponsibilitiesHeader.setHeight(withContant: 30)
+        rolesAndResponsibilitiesHeader.setWidth(withContant: view.bounds.width - 16)
+        rolesAndResponsibilitiesHeader.leading(from: contentView, constant: 8)
+        rolesAndResponsibilitiesHeader.trailing(from: contentView, constant: 8)
+        rolesAndResponsibilitiesHeader.backgroundColor = .lightGray
+        let sectionTitle = UILabel()
+        sectionTitle.translatesAutoresizingMaskIntoConstraints = false
+        rolesAndResponsibilitiesHeader.addSubview(sectionTitle)
+        sectionTitle.center(in: rolesAndResponsibilitiesHeader)
+        sectionTitle.text = ShowCVConstants.rolesAndResponsibilityTitle
+        sectionTitle.sizeToFit()
+        guard let personalInfo = personalInfo else { return }
+        for role in personalInfo.rolesAndResponsibilities {
+            let row = UIView()
+            let bullet = UILabel()
+            let point = UILabel()
+            row.addSubview(bullet)
+            row.addSubview(point)
+            point.font = UIFont.systemFont(ofSize: 12.0)
+            point.numberOfLines = 0
+            row.translatesAutoresizingMaskIntoConstraints = false
+            bullet.translatesAutoresizingMaskIntoConstraints = false
+            point.translatesAutoresizingMaskIntoConstraints = false
+            bullet.text =  "•"
+            point.text = role
+            bullet.sizeToFit()
+            point.sizeToFit()
+            point.pin(to: row, insets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+            rolesAndResponsibilitiesSection.addArrangedSubview(row)
+        }
+//        let bullets =  "•"+personalInfo.rolesAndResponsibilities.joined(separator: "\n•")
+//        let bulletPointsLabel = UILabel()
+//        bulletPointsLabel.numberOfLines = 0
+//        bulletPointsLabel.translatesAutoresizingMaskIntoConstraints = false
+//        bulletPointsLabel.text = bullets
+        
     }
     
     fileprivate func updateEmail() {

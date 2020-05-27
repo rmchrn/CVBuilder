@@ -12,6 +12,7 @@ struct ShowCVConstants {
     static let mobileTitle = "Mobile Number: "
     static let profileImageName = "ram"
     static let personalInfoTitle = "Personal Information"
+    static let rolesAndResponsibilityTitle = "Roles & Responsibilities"
     static let addressTitle = "Address: "
     static let dobTitle = "Date of birth: "
     static let skillsTitle = "Skills:"
