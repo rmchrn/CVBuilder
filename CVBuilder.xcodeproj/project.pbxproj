@@ -45,6 +45,7 @@
 		B4AB340E247D926A00951327 /* ShowCVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340D247D926A00951327 /* ShowCVConstants.swift */; };
 		B4AB3410247E346E00951327 /* ShowCVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340F247E346E00951327 /* ShowCVViewModel.swift */; };
 		B4AB3412247E3C1200951327 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB3411247E3C1200951327 /* LandingViewModel.swift */; };
+		B4AB3450247E8A3300951327 /* PDFConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB344F247E8A3300951327 /* PDFConvertible.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		B4AB340D247D926A00951327 /* ShowCVConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVConstants.swift; sourceTree = "<group>"; };
 		B4AB340F247E346E00951327 /* ShowCVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVViewModel.swift; sourceTree = "<group>"; };
 		B4AB3411247E3C1200951327 /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
+		B4AB344F247E8A3300951327 /* PDFConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFConvertible.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 				B418075424753F56008E097A /* Coordinator.swift */,
 				B418075624753F7F008E097A /* Storyboarded.swift */,
 				B4148F5924765E4300F501AB /* Theme.swift */,
+				B4AB344F247E8A3300951327 /* PDFConvertible.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 			files = (
 				B4148F5E247660BE00F501AB /* Constants.swift in Sources */,
 				B418078524764988008E097A /* PersonalViewModel.swift in Sources */,
+				B4AB3450247E8A3300951327 /* PDFConvertible.swift in Sources */,
 				B4148F602476615E00F501AB /* PersonalViewConstants.swift in Sources */,
 				B418075524753F56008E097A /* Coordinator.swift in Sources */,
 				B418075B247541BF008E097A /* LandingViewController.swift in Sources */,

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// swiftlint:disable:next type_body_length
 class ShowCVViewController: AppBaseController {
     // MARK: - User interface variables
     var mainScrollView: UIScrollView!
@@ -47,6 +47,13 @@ class ShowCVViewController: AppBaseController {
         initialViewSetup()
     }
     
+    override func viewDidLayoutSubviews() {
+        let contentRect: CGRect = mainScrollView.subviews.reduce(into: .zero) { rect, view in
+            rect = rect.union(view.frame)
+        }
+        mainScrollView.contentSize = contentRect.size
+        mainScrollView.createPDF(from: mainScrollView, withName: "Ramcharan_resume")
+    }
     fileprivate func initialViewSetup() {
         setupScrollView()
         setupBasicInfoVStack()
@@ -100,8 +107,6 @@ class ShowCVViewController: AppBaseController {
     }
     
     fileprivate func setupScrollView() {
-        //personalInfoModel.firstName
-        
         self.mainScrollView = UIScrollView()
         mainScrollView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(mainScrollView)
@@ -139,7 +144,7 @@ class ShowCVViewController: AppBaseController {
         guard let url = URL(string: urlString) else { return }
 
         DispatchQueue.global().async {
-            let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            let data = try? Data(contentsOf: url)
             DispatchQueue.main.async {
                 if let imageData = data {
                     self.profileAvatarImageView.image = UIImage(data: imageData)
@@ -248,14 +253,9 @@ class ShowCVViewController: AppBaseController {
             bullet.sizeToFit()
             point.sizeToFit()
             point.pin(to: row, insets: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0))
+            bullet.pin(to: row, insets: UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
             rolesAndResponsibilitiesSection.addArrangedSubview(row)
         }
-//        let bullets =  "•"+personalInfo.rolesAndResponsibilities.joined(separator: "\n•")
-//        let bulletPointsLabel = UILabel()
-//        bulletPointsLabel.numberOfLines = 0
-//        bulletPointsLabel.translatesAutoresizingMaskIntoConstraints = false
-//        bulletPointsLabel.text = bullets
-        
     }
     
     fileprivate func updateEmail() {
@@ -291,3 +291,4 @@ class ShowCVViewController: AppBaseController {
     }
 }
 extension ShowCVViewController: ErrorPresentable {}
+extension UIScrollView: PDFConverible {}
