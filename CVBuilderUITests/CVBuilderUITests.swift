@@ -29,6 +29,11 @@ class CVBuilderUITests: XCTestCase {
         let cell = app.tables.staticTexts["Personal information"]
         cell.tap()
         let elementsQuery = app.scrollViews["scrollView"].otherElements
+        let image = elementsQuery.containing(.textField, identifier: "Enter first name").children(matching: .image)
+        image.element.tap()
+        app.sheets["Choose Image"].scrollViews.otherElements.buttons["Gallery"].tap()
+        app.tables.cells["Moments"].tap()
+        app.collectionViews["PhotosGridView"].cells.element(boundBy: 0).tap()
         let firstName = elementsQuery.textFields["Enter first name"]
         firstName.tap()
         firstName.typeText("Ramcharan")
@@ -68,18 +73,34 @@ class CVBuilderUITests: XCTestCase {
         enterHigherEducationTextField.tap()
         enterHigherEducationTextField.typeText("82")
         app.navigationBars["Personal Info"].buttons["save"].tap()
-        app.alerts["CVBuilder"].scrollViews.otherElements.buttons["Ok"].tap()
     }
-
-    func testViewOrEditFlow() {
+    func testEditFlow() {
         let app = XCUIApplication()
         app.activate()
-        let viewButton = app.buttons.element(boundBy: 1)
+        let viewButton = app.buttons.element(boundBy: 2)
         viewButton.tap()
         let cell = app.tables.staticTexts["Personal information"]
         cell.tap()
-        app.scrollViews["scrollView"].otherElements.textFields["Enter email Id"].tap()
+        let elementsQuery = app.scrollViews["scrollView"].otherElements
+        let enterEmailIdTextField = elementsQuery.textFields["Enter email Id"]
+        enterEmailIdTextField.tap()
+        enterEmailIdTextField.clearAndEnterText(text: "Ram@infy.com")
         app.navigationBars["Personal Info"].buttons["save"].tap()
-        app.alerts["CVBuilder"].scrollViews.otherElements.buttons["Ok"].tap()
+    }
+}
+
+extension XCUIElement {
+    func clearAndEnterText(text: String) {
+        guard let stringValue = self.value as? String else {
+            XCTFail("Tried to clear and enter text into a non string value")
+            return
+        }
+
+        self.tap()
+
+        let deleteString = String(repeating: XCUIKeyboardKey.delete.rawValue, count: stringValue.count)
+
+        self.typeText(deleteString)
+        self.typeText(text)
     }
 }

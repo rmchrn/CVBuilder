@@ -23,4 +23,5 @@ struct PersonalInfo: Codable {
     var secondaryEducationMarks = ""
     var higherEducationMarks = ""
     var userImage = ""
+    var linkedInProofile = ""
 }

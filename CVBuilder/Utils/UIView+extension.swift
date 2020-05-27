@@ -24,6 +24,30 @@ extension UIView {
         ])
     }
     
+    func top(from view: UIView, constant: CGFloat =  0.0) {
+        UIView.activate(constraints: [
+            topAnchor.constraint(equalTo: view.topAnchor, constant: constant)
+        ])
+    }
+    
+    func trailing(from view: UIView, constant: CGFloat =  0.0) {
+        UIView.activate(constraints: [
+            trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -constant)
+        ])
+    }
+    
+    func leading(from view: UIView, constant: CGFloat =  0.0) {
+        UIView.activate(constraints: [
+            leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: constant)
+        ])
+    }
+    
+    func bottom(from view: UIView, constant: CGFloat =  0.0) {
+        UIView.activate(constraints: [
+            bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -constant)
+        ])
+    }
+    
     func center(in view: UIView, offset: UIOffset = .zero) {
         UIView.activate(constraints: [
             centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: offset.horizontal),

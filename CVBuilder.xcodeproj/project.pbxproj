@@ -42,6 +42,9 @@
 		B4AB33C6247689C500951327 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B4AB33C5247689C500951327 /* .swiftlint.yml */; };
 		B4AB33C82476A5C400951327 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB33C72476A5C400951327 /* CoordinatorTests.swift */; };
 		B4AB340C247D70ED00951327 /* ShowCVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340B247D70ED00951327 /* ShowCVViewController.swift */; };
+		B4AB340E247D926A00951327 /* ShowCVConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340D247D926A00951327 /* ShowCVConstants.swift */; };
+		B4AB3410247E346E00951327 /* ShowCVViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB340F247E346E00951327 /* ShowCVViewModel.swift */; };
+		B4AB3412247E3C1200951327 /* LandingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AB3411247E3C1200951327 /* LandingViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +106,9 @@
 		B4AB33C5247689C500951327 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B4AB33C72476A5C400951327 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		B4AB340B247D70ED00951327 /* ShowCVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVViewController.swift; sourceTree = "<group>"; };
+		B4AB340D247D926A00951327 /* ShowCVConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVConstants.swift; sourceTree = "<group>"; };
+		B4AB340F247E346E00951327 /* ShowCVViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowCVViewModel.swift; sourceTree = "<group>"; };
+		B4AB3411247E3C1200951327 /* LandingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +202,7 @@
 			children = (
 				B418075A247541BF008E097A /* LandingViewController.swift */,
 				B418078924765B2C008E097A /* LandingConstants.swift */,
+				B4AB3411247E3C1200951327 /* LandingViewModel.swift */,
 			);
 			path = Landing;
 			sourceTree = "<group>";
@@ -277,6 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				B4AB340B247D70ED00951327 /* ShowCVViewController.swift */,
+				B4AB340D247D926A00951327 /* ShowCVConstants.swift */,
+				B4AB340F247E346E00951327 /* ShowCVViewModel.swift */,
 			);
 			path = ShowCV;
 			sourceTree = "<group>";
@@ -450,17 +459,20 @@
 				B4180772247587E2008E097A /* PersonalViewController.swift in Sources */,
 				B418077A24758DDC008E097A /* DataHolder.swift in Sources */,
 				B418075D24754B71008E097A /* UIView+extension.swift in Sources */,
+				B4AB3412247E3C1200951327 /* LandingViewModel.swift in Sources */,
 				B41807662475606B008E097A /* AppBaseController.swift in Sources */,
 				B418075724753F7F008E097A /* Storyboarded.swift in Sources */,
 				B418077C24758F1E008E097A /* UIViewFactory.swift in Sources */,
 				B418072524753EB8008E097A /* AppDelegate.swift in Sources */,
 				B418077824758A8A008E097A /* ImagePickerManager.swift in Sources */,
+				B4AB3410247E346E00951327 /* ShowCVViewModel.swift in Sources */,
 				B418077E24758F86008E097A /* StringExtension.swift in Sources */,
 				B418078A24765B2C008E097A /* LandingConstants.swift in Sources */,
 				B4180768247560AE008E097A /* ErrorPresentable.swift in Sources */,
 				B418076A2475612F008E097A /* SuccessPresentable.swift in Sources */,
 				B4180780247638D8008E097A /* ServiceHandler.swift in Sources */,
 				B418072724753EB8008E097A /* SceneDelegate.swift in Sources */,
+				B4AB340E247D926A00951327 /* ShowCVConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

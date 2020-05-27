@@ -20,12 +20,21 @@ class LandingViewController: AppBaseController {
     
     // MARK: - Coordinator
     weak var coordinator: MainCoordinator?
-    
+    var viewModel = LandingViewModel()
+    var personalInfo: PersonalInfo? = PersonalInfo()
     // MARK: - life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = LandingConstants.kVCTitle
+        
+        viewModel.getProfileData { (personal, error) in
+            if error == nil {
+                self.personalInfo = personal
+            } else {
+                self.showError(withMessage: error?.localizedDescription ?? "Error while fetching resume data")
+            }
+        }
         
         initialViewSetup()
     }
@@ -64,7 +73,7 @@ class LandingViewController: AppBaseController {
         self.view.addSubview(viewButton)
         viewButton.setWidth(withContant: 150)
         viewButton.setHeight(withContant: 40)
-        viewButton.addTarget(self, action: #selector(viewOrEditResume), for: .touchUpInside)
+        viewButton.addTarget(self, action: #selector(viewResume), for: .touchUpInside)
         stack.addArrangedSubview(viewButton)
     }
     
@@ -77,7 +86,7 @@ class LandingViewController: AppBaseController {
         self.view.addSubview(editButton)
         editButton.setWidth(withContant: 150)
         editButton.setHeight(withContant: 40)
-        editButton.addTarget(self, action: #selector(viewOrEditResume), for: .touchUpInside)
+        editButton.addTarget(self, action: #selector(editResume), for: .touchUpInside)
         stack.addArrangedSubview(editButton)
     }
     
@@ -86,8 +95,14 @@ class LandingViewController: AppBaseController {
         coordinator?.gotoCreateVC(true)
     }
     
-    @objc func viewOrEditResume() {
+    @objc func editResume() {
         coordinator?.gotoCreateVC(false)
     }
     
+    @objc func viewResume() {
+        self.coordinator?.gotoShowCVVC(personalInfo: personalInfo)
+    }
+    
 }
+
+extension LandingViewController: ErrorPresentable {}

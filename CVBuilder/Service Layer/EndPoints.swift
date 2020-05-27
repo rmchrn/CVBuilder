@@ -9,5 +9,5 @@
 import Foundation
 
 struct EndPoints {
-    static let getProfileDataEndpoint = "https://api.jsonbin.io/b/5ec61edce91d1e45d10e6054"
+    static let getProfileDataEndpoint = "https://api.jsonbin.io/b/5ec61edce91d1e45d10e6054/4"
 }

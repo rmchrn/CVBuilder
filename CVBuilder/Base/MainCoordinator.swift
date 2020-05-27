@@ -35,4 +35,10 @@ class MainCoordinator: Coordinator {
         personalInfoVC.isNewCV = isNewCV
         navigationController.pushViewController(personalInfoVC, animated: false)
     }
+    
+    func gotoShowCVVC(personalInfo: PersonalInfo?) {
+        let showCVVC = ShowCVViewController(withInfo: personalInfo)
+//        showCVVC.coordinator = self
+        navigationController.pushViewController(showCVVC, animated: false)
+    }
 }

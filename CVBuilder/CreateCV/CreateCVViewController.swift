@@ -17,7 +17,7 @@ class CreateCVViewController: AppBaseController {
     
     var isNewCV: Bool = true
     
-    var dataSource = [CreateCVConstants.kPersonalInfo, CreateCVConstants.kPastProjects, CreateCVConstants.kProfessionalInfo, CreateCVConstants.kAdditionalInfo]
+    var dataSource = [CreateCVConstants.kPersonalInfo]
     // MARK: - life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()

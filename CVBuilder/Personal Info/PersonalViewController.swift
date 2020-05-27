@@ -111,6 +111,7 @@ class PersonalViewController: AppBaseController {
         setUpNavigationView()
         //set up scroll view
         personalInfoScrollView.contentSize = CGSize(width: self.view.frame.size.width, height: 1000)
+        userImageView.contentMode = .scaleAspectFit
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         personalInfoScrollView.accessibilityIdentifier = "scrollView"
@@ -182,9 +183,10 @@ class PersonalViewController: AppBaseController {
         }
     }
     
-    // MARK: - Save data locally.
+    // MARK: - capture and preview
     @objc func saveSelector() {
-        self.showError(withMessage: "Working on it!!")
+        let personalInfo = createPeronalInfoModel()
+        coordinator?.gotoShowCVVC(personalInfo: personalInfo)
     }
     
     // MARK: - Dismiss Keyboard
