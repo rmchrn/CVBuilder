@@ -53,12 +53,11 @@ class ShowCVViewController: AppBaseController {
         setupMobileNumberLabel()
         setupEmailLabel()
         setupLinkedProfileLabel()
-        basicInfoVStackView.sizeToFit()
         setupProfileAvatar()
-        setupPersonalInfoStack()
-        setupPersonalHeader()
         setupRolesStack()
         setupRolesHeader()
+        setupPersonalInfoStack()
+        setupPersonalHeader()
         guard let personalInfo = personalInfo else { return }
         self.title = personalInfo.firstName
         let lastView = self.contentView.subviews.last
@@ -157,7 +156,7 @@ class ShowCVViewController: AppBaseController {
         personalInfoSection.axis = .vertical
         personalInfoSection.spacing = 16
         contentView.addSubview(personalInfoSection)
-        NSLayoutConstraint(item: personalInfoSection as Any, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: profileAvatarImageView as Any, attribute: .bottom, multiplier: 1.0, constant: 5).isActive = true
+        NSLayoutConstraint(item: personalInfoSection as Any, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: rolesAndResponsibilitiesSection as Any, attribute: .bottom, multiplier: 1.0, constant: 5).isActive = true
         personalInfoSection.leading(from: contentView, constant: 8)
         personalInfoSection.trailing(from: contentView, constant: 8)
     }
@@ -212,7 +211,7 @@ class ShowCVViewController: AppBaseController {
         rolesAndResponsibilitiesSection.axis = .vertical
         rolesAndResponsibilitiesSection.spacing = 16
         contentView.addSubview(rolesAndResponsibilitiesSection)
-        NSLayoutConstraint(item: rolesAndResponsibilitiesSection as Any, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: personalInfoSection as Any, attribute: .bottom, multiplier: 1.0, constant: 5).isActive = true
+        NSLayoutConstraint(item: rolesAndResponsibilitiesSection as Any, attribute: NSLayoutConstraint.Attribute.top, relatedBy: NSLayoutConstraint.Relation.equal, toItem: profileAvatarImageView as Any, attribute: .bottom, multiplier: 1.0, constant: 5).isActive = true
         rolesAndResponsibilitiesSection.leading(from: contentView, constant: 8)
         rolesAndResponsibilitiesSection.trailing(from: contentView, constant: 8)
     }
