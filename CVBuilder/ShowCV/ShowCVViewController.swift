@@ -62,7 +62,9 @@ class ShowCVViewController: AppBaseController {
         setupLinkedProfileLabel()
         setupProfileAvatar()
         setupRolesStack()
-        setupRolesHeader()
+        if let roles = personalInfo?.rolesAndResponsibilities, !roles.isEmpty {
+            setupRolesHeader()
+        }
         setupPersonalInfoStack()
         setupPersonalHeader()
         guard let personalInfo = personalInfo else { return }
